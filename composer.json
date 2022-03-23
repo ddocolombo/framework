@@ -1,0 +1,12 @@
+{
+    "name" : "ddocolombo/framework",
+    "description": "Ddocolombo Framework",
+    "minimum-stability": "dev",
+    "autoload" : {
+        "psr-4" : {
+            "Framework\\" : "framework/",
+            "App\\" : "app/"
+        },
+        "files": ["framework/helper.php"]
+    }
+}
