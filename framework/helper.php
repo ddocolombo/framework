@@ -1,12 +1,14 @@
 <?php
 
-ini_set('xdebug.var_display_max_depth', 10);
-ini_set('xdebug.var_display_max_children', 256);
-ini_set('xdebug.var_display_max_data', 1024);
+declare(strict_types=1);
 
 set_error_handler(function ($severity, $message, $file, $line) {
     throw new \ErrorException($message, $severity, $severity, $file, $line);
 });
+
+ini_set('xdebug.var_display_max_depth', 10);
+ini_set('xdebug.var_display_max_children', 256);
+ini_set('xdebug.var_display_max_data', 1024);
 
 $timezones = [
     'AC' => 'America/Rio_branco',   'AL' => 'America/Maceio',
@@ -58,7 +60,7 @@ function config($path) {
 }
 
 function view(string $path, array $params = []) {
-    return new \Components\View\View($path, $params);
+    return new \Framework\View\View($path, $params);
 }
 
 function template($path)
