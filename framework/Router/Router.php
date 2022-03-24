@@ -22,7 +22,7 @@ class Router
     {
         $found = null; $canRespond = false;
 
-        foreach ($this->routes as $uri => $route) {
+        foreach ($this->routes as $route) {
             if (!$route->matchRequest()) continue;
             $found = $route;
             if (!$route->canRespondTo(Request::getMethod())) continue;
@@ -30,8 +30,8 @@ class Router
             break;
         }
 
-        if (!$found) return Response::notFound();
-        if ($found && !$canRespond) return Response::methodNotAllowed();
+        if (!$found) Response::notFound();
+        if ($found && !$canRespond) Response::methodNotAllowed();
 
         return Response::success(false, $found);
     }
